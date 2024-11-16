@@ -6,6 +6,6 @@ import java.sql.Connection;
 
 public class Main {
     public static void main(String[] args) {
-        Connection conn = Util.getConnection();
+        Connection conn1 = Util.getConnection();
     }
 }
