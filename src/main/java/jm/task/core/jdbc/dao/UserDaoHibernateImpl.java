@@ -2,10 +2,7 @@ package jm.task.core.jdbc.dao;
 
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
-import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +46,7 @@ public class UserDaoHibernateImpl implements UserDao {
             User user = new User(name, lastName, age);
             session.save(user);
             session.getTransaction().commit();
+            System.out.println("User с именем — " + name +" добавлен в базу данных");
         } finally {
             session.close();
         }
@@ -75,6 +73,7 @@ public class UserDaoHibernateImpl implements UserDao {
             session.beginTransaction();
             person = session.createQuery("from User", User.class).getResultList();
             session.getTransaction().commit();
+            System.out.println(person);
         } finally {
             session.close();
         }
